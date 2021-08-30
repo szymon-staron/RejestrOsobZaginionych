@@ -1,0 +1,24 @@
+﻿@model WebApplication2.ViewModels.NewUzytkownikViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nowy użytkownik</h2>
+
+@using (Html.BeginForm("Create", "Konta"))
+{
+    <div class="form-grup">
+
+        @Html.LabelFor(m => m.Konto.Name)
+        @Html.TextBoxFor(m => m.Konto.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-grup">
+
+        @Html.LabelFor(m => m.Konto.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Konto.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id"), "Wybierz uprawnienia", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="bnt btn-primary">Zapisz</button>
+
+}

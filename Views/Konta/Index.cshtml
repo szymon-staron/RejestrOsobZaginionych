@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication2.Models.Konta>
+
+
+@{
+    ViewBag.Title = "Konta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Konta</h2>
+@if (!Model.Any())
+{
+    <p>Nie mamy żadnych kont narazie.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Konta</th>
+                <th>Typ Konta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Konta in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(Konta.Name, "Details", "Konta", new { id = Konta.Id }, null)</td>
+                    <td>@Konta.MembershipTypeId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
